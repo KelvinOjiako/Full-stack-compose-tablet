@@ -1,24 +1,10 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
-    kotlin("jvm") version "1.8.21"
-}
-
-group = "org.kotopia"
-version = "1.0-SNAPSHOT"
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    testImplementation(kotlin("test"))
-}
-
-tasks.test {
-    useJUnitPlatform()
-}
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
+    // this is necessary to avoid the plugins to be loaded multiple times
+    // in each subproject's classloader
+    kotlin("multiplatform").apply(false)
+    // id("com.android.application").apply(false)
+    // id("com.android.library").apply(false)
+    id("org.jetbrains.compose").apply(false)
+    kotlin("plugin.serialization") apply false
+    id("io.ktor.plugin")  apply false
 }
