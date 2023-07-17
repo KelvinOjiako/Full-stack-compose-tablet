@@ -22,5 +22,5 @@ fun Application.backendSPA(){
 }
 
 fun main(){
-    embeddedServer(Netty, port = 8080) { backendSPA() }.start(wait = true)
+    embeddedServer(Netty, port = 8045) { backendSPA() }.start(wait = true)
 }
