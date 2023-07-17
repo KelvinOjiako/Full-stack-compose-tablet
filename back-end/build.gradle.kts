@@ -26,11 +26,6 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:$logback_version")
 }
 
-
-tasks.register<Copy>("backEndSinglePageTransfer") {
-    dependsOn(":front-end:copyFrontEndToBackEnd")
-}
-
 tasks.named("run") {
-    dependsOn(tasks.named("backEndSinglePageTransfer"))
+    dependsOn(":front-end:jsBrowserProductionWebpack")
 }
